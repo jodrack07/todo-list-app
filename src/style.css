@@ -1,3 +1,74 @@
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
 body {
-  background-color: bisque;
+  background-color: rgba(211, 211, 211, 0.5);
+  margin-top: 45px;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+.todo-intro {
+  margin: 5px 0;
+  padding: 10px 0;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.todo {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.todo-left {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.todo-left input {
+  margin-left: -20px;
+  height: 20px;
+  width: 20px;
+}
+
+.underline {
+  text-decoration: line-through;
+  color: green;
+  font-weight: 600;
+}
+
+.delete-all-btn {
+  width: 100%;
+}
+
+.delete-all-btn a {
+  color: #3d3d3d;
+  font-weight: 500;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.delete-all-btn a:hover {
+  text-decoration: underline;
+  color: dodgerblue;
+}
+
+@media screen and (min-width: 768px) {
+  .card {
+    padding: 30px;
+    background-color: #fff;
+  }
+
+  .container {
+    width: 60vw;
+  }
 }

@@ -1,20 +1,7 @@
-import _ from 'lodash';
-import printMe from './print.js';
+import UI from '../modules/UI.js';
 import './style.css';
 
-function component() {
-  const element = document.createElement('div');
-  const btn = document.createElement('button');
+const ui = new UI();
 
-  btn.innerHTML = 'Click me and check the console!';
-  btn.onclick = printMe;
-
-  element.appendChild(btn);
-
-  // Lodash, currently included via a script, is required for this line to work
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-
-  return element;
-}
-
-document.body.appendChild(component());
+// trigger the renderTodos method to display the li
+ui.renderTodos();

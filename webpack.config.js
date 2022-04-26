@@ -5,7 +5,6 @@ module.exports = {
   mode: 'production',
   entry: {
     index: './src/index.js',
-    print: './src/print.js',
   },
   devtool: false,
   devServer: {

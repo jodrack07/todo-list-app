@@ -6,8 +6,6 @@
 > It lists all the activities that you need to be completed and allows you to mark them as complete or not.
 > Tasks can also be dragged and dropped in any position. It's a minimalistic website built using JavaScript ES6, Webpack and CSS.
 
-![screenshot]()
-
 ## Built With
 
 - Major languages (HTML, CSS, JavaScript)
@@ -21,7 +19,7 @@
 
 ## Live Demo
 
-[Live Demo Link here]()
+[Live Demo Link here](https://joseph07-drack.github.io/todo-app/)
 
 ## Getting Started
 
