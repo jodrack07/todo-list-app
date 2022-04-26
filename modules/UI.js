@@ -14,8 +14,8 @@ export default class UI {
                   todo.index
                 }" ${todo.completed ? 'checked' : ''}>
                 <p class='${todo.completed ? 'underline' : ''}'>${
-          todo.description
-        }</p>
+                  todo.description
+                }</p>
                 </div>
                 <i class="fa-solid fa-ellipsis-vertical"></i>
             </div>
