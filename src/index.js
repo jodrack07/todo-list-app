@@ -1,4 +1,4 @@
-import UI from '../modules/UI';
+import UI from '../modules/UI.js';
 import './style.css';
 
 const ui = new UI();
