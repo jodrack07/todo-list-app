@@ -1,6 +1,6 @@
 export default [
   {
-    index: 1,
+    index: 10,
     description: 'Practice Webpack correclty',
     completed: true,
   },
