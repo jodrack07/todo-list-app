@@ -6,8 +6,6 @@
 > It lists all the activities that you need to be completed and allows you to mark them as complete or not.
 > Tasks can also be dragged and dropped in any position. It's a minimalistic website built using JavaScript ES6, Webpack and CSS.
 
-![screenshot]('./app.png')
-
 ## Built With
 
 - Major languages (HTML, CSS, JavaScript)
