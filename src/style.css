@@ -36,7 +36,8 @@ li {
 
 .todo-left input {
   margin-left: -20px;
-  margin-top: 4px;
+  height: 20px;
+  width: 20px;
 }
 
 .underline {
