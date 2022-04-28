@@ -1,3 +1,5 @@
+/* eslint-disable func-names */
+
 import { deleteTask, updateStatus } from './modules/actions.js';
 import './style.css';
 
@@ -84,31 +86,23 @@ const showSubActions = (selectedTodo) => {
   });
 };
 
-toggleButtons.forEach((toggleButton) =>
-  toggleButton.addEventListener('click', function () {
-    showSubActions(this);
-  })
-);
+toggleButtons.forEach((toggleButton) => toggleButton.addEventListener('click', function () {
+  showSubActions(this);
+}));
 
-editButtons.forEach((editButton) =>
-  editButton.addEventListener('click', function () {
-    const [id, description] = this.getAttribute('data-info').split(',');
-    editTask(Number(id), String(description));
-  })
-);
+editButtons.forEach((editButton) => editButton.addEventListener('click', function () {
+  const [id, description] = this.getAttribute('data-info').split(',');
+  editTask(Number(id), String(description));
+}));
 
-deleteButtons.forEach((deleteButton) =>
-  deleteButton.addEventListener('click', function () {
-    const id = this.getAttribute('data-id');
-    deleteTask(Number(id));
-  })
-);
+deleteButtons.forEach((deleteButton) => deleteButton.addEventListener('click', function () {
+  const id = this.getAttribute('data-id');
+  deleteTask(Number(id));
+}));
 
-statuses.forEach((input) =>
-  input.addEventListener('click', function () {
-    updateStatus(this);
-  })
-);
+statuses.forEach((input) => input.addEventListener('click', function () {
+  updateStatus(this);
+}));
 
 document.querySelector('#refresh').addEventListener('click', () => {
   window.location.reload();
