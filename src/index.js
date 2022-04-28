@@ -100,3 +100,38 @@ function updateStatus(selectedTodo) {
   // save changes into the local storage
   localStorage.setItem('todo-list', JSON.stringify(todos));
 }
+
+const toggleButtons = document.querySelectorAll('.fa-ellipsis');
+// console.log(toggleButtons);
+toggleButtons.forEach((toggleButton) =>
+  toggleButton.addEventListener('click', function () {
+    showSubActions(this);
+  })
+);
+
+const editButtons = document.querySelectorAll('.edit');
+editButtons.forEach((editButton) =>
+  editButton.addEventListener('click', function () {
+    const [id, description] = this.getAttribute('data-info').split(',');
+    editTask(Number(id), String(description));
+  })
+);
+
+const deleteButtons = document.querySelectorAll('.delete');
+deleteButtons.forEach((deleteButton) =>
+  deleteButton.addEventListener('click', function () {
+    const id = this.getAttribute('data-id');
+    deleteTask(Number(id));
+  })
+);
+
+const statuses = document.querySelectorAll('.input');
+statuses.forEach((input) =>
+  input.addEventListener('click', function () {
+    updateStatus(this);
+  })
+);
+
+document.querySelector('#refresh').addEventListener('click', (e) => {
+  location.reload();
+});
