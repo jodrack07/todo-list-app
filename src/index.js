@@ -44,3 +44,10 @@ const showSubActions = (selectedTodo) => {
     }
   });
 };
+
+const editTask = (id, taskDescription) => {
+  editId = id;
+  isEditedTodo = true;
+  // put the todo description into the input field
+  taskInput.value = taskDescription;
+};
