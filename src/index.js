@@ -58,3 +58,19 @@ function deleteTask(id) {
   localStorage.setItem('todo-list', JSON.stringify(todos));
   showTodos();
 }
+
+function updateStatus(selectedTodo) {
+  // get tje paragraph
+  let taskDescription = selectedTodo.parentElement.lastElementChild;
+  if (selectedTodo.checked) {
+    taskDescription.classList.add('completed');
+    // update the status of the checked todo
+    todos[selectedTodo.id].completed = true;
+  } else {
+    taskDescription.classList.remove('completed');
+    // update the status of the checked todo
+    todos[selectedTodo.id].completed = false;
+  }
+  // save changes into the local storage
+  localStorage.setItem('todo-list', JSON.stringify(todos));
+}
