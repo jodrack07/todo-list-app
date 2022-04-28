@@ -97,6 +97,11 @@ a {
   font-size: 15px;
 }
 
+.sub-actions {
+  font-size: 16px;
+  color: #4e4e4e;
+}
+
 .actions .sub-actions {
   position: absolute;
   top: -5px;
@@ -115,11 +120,6 @@ a {
   transform: scale(1);
 }
 
-.sub-actions {
-  font-size: 16px;
-  color: #4e4e4e;
-}
-
 .sub-actions #edit {
   color: dodgerblue;
 }
@@ -130,7 +130,6 @@ a {
 
 .sub-actions li {
   height: 25px;
-  margin-bottom: 2px;
   padding: 17px 15px;
   justify-content: flex-start;
   margin-bottom: 10px;
