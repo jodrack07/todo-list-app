@@ -2,7 +2,6 @@ import './style.css';
 
 const taskInput = document.querySelector('.add-input');
 const taskBox = document.querySelector('.task-box');
-const statuses = document.querySelectorAll('.input');
 
 let editId;
 let isEditedTodo = false;
@@ -65,6 +64,7 @@ showTodos();
 const editButtons = document.querySelectorAll('.edit');
 const deleteButtons = document.querySelectorAll('.delete');
 const toggleButtons = document.querySelectorAll('.fa-ellipsis');
+const statuses = document.querySelectorAll('.input');
 
 const showSubActions = (selectedTodo) => {
   let taskMenu = selectedTodo.parentElement.lastElementChild;
@@ -106,7 +106,6 @@ function updateStatus(selectedTodo) {
   localStorage.setItem('todo-list', JSON.stringify(todos));
 }
 
-// console.log(toggleButtons);
 toggleButtons.forEach((toggleButton) =>
   toggleButton.addEventListener('click', function () {
     showSubActions(this);
