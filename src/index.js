@@ -51,3 +51,10 @@ const editTask = (id, taskDescription) => {
   // put the todo description into the input field
   taskInput.value = taskDescription;
 };
+
+function deleteTask(id) {
+  // remove one todo from the specified id
+  todos.splice(id, 1);
+  localStorage.setItem('todo-list', JSON.stringify(todos));
+  showTodos();
+}
