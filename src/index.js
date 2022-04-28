@@ -7,40 +7,14 @@ let editId;
 let isEditedTodo = false;
 
 // get data from the localstorage
-let todos = JSON.parse(localStorage.getItem('todo-list')) || [];
-
-taskInput.addEventListener('keyup', (e) => {
-  let userTask = taskInput.value.trim();
-  if (e.key === 'Enter' && userTask) {
-    // fix the edit action
-    if (!isEditedTodo) {
-      let newTodo = {
-        description: userTask,
-        completed: false,
-        index: todos.length + 1,
-      };
-      // add the new todo to the todo list
-      todos.push(newTodo);
-    } else {
-      isEditedTodo = false;
-      todos[editId].description = taskInput.value;
-      location.reload();
-    }
-
-    taskInput.value = '';
-
-    // update the todo
-    localStorage.setItem('todo-list', JSON.stringify(todos));
-    showTodos();
-  }
-});
+const todos = JSON.parse(localStorage.getItem('todo-list')) || [];
 
 function showTodos() {
   taskBox.innerText = '';
   todos.forEach((todo, index) => {
     // apply the completed status iff the task/todo is completed
-    let isCompleted = todo.completed ? 'completed' : '';
-    let checked = isCompleted === 'completed' ? 'checked' : '';
+    const isCompleted = todo.completed ? 'completed' : '';
+    const checked = isCompleted === 'completed' ? 'checked' : '';
     taskBox.innerHTML += `
             <li class="task">
           <label for="${index}">
@@ -59,6 +33,32 @@ function showTodos() {
   });
 }
 
+taskInput.addEventListener('keyup', (e) => {
+  const userTask = taskInput.value.trim();
+  if (e.key === 'Enter' && userTask) {
+    // fix the edit action
+    if (!isEditedTodo) {
+      const newTodo = {
+        description: userTask,
+        completed: false,
+        index: todos.length + 1,
+      };
+      // add the new todo to the todo list
+      todos.push(newTodo);
+    } else {
+      isEditedTodo = false;
+      todos[editId].description = taskInput.value;
+      window.location.reload();
+    }
+
+    taskInput.value = '';
+
+    // update the todo
+    localStorage.setItem('todo-list', JSON.stringify(todos));
+    showTodos();
+  }
+});
+
 showTodos();
 
 const editButtons = document.querySelectorAll('.edit');
@@ -67,7 +67,7 @@ const toggleButtons = document.querySelectorAll('.fa-ellipsis');
 const statuses = document.querySelectorAll('.input');
 
 const showSubActions = (selectedTodo) => {
-  let taskMenu = selectedTodo.parentElement.lastElementChild;
+  const taskMenu = selectedTodo.parentElement.lastElementChild;
   taskMenu.classList.add('show');
   document.addEventListener('click', (e) => {
     if (e.target.tagName !== 'I' || e.target !== selectedTodo) {
@@ -92,7 +92,7 @@ function deleteTask(id) {
 
 function updateStatus(selectedTodo) {
   // get tje paragraph
-  let taskDescription = selectedTodo.parentElement.lastElementChild;
+  const taskDescription = selectedTodo.parentElement.lastElementChild;
   if (selectedTodo.checked) {
     taskDescription.classList.add('completed');
     // update the status of the checked todo
@@ -132,6 +132,6 @@ statuses.forEach((input) =>
   })
 );
 
-document.querySelector('#refresh').addEventListener('click', (e) => {
-  location.reload();
+document.querySelector('#refresh').addEventListener('click', () => {
+  window.location.reload();
 });
