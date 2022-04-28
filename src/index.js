@@ -9,6 +9,32 @@ let isEditedTodo = false;
 // get data from the localstorage
 let todos = JSON.parse(localStorage.getItem('todo-list')) || [];
 
+taskInput.addEventListener('keyup', (e) => {
+  let userTask = taskInput.value.trim();
+  if (e.key === 'Enter' && userTask) {
+    // fix the edit action
+    if (!isEditedTodo) {
+      let newTodo = {
+        description: userTask,
+        completed: false,
+        index: todos.length + 1,
+      };
+      // add the new todo to the todo list
+      todos.push(newTodo);
+    } else {
+      isEditedTodo = false;
+      todos[editId].description = taskInput.value;
+      location.reload();
+    }
+
+    taskInput.value = '';
+
+    // update the todo
+    localStorage.setItem('todo-list', JSON.stringify(todos));
+    showTodos();
+  }
+});
+
 function showTodos() {
   taskBox.innerText = '';
   todos.forEach((todo, index) => {
