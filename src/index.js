@@ -34,3 +34,13 @@ function showTodos() {
 }
 
 showTodos();
+
+const showSubActions = (selectedTodo) => {
+  let taskMenu = selectedTodo.parentElement.lastElementChild;
+  taskMenu.classList.add('show');
+  document.addEventListener('click', (e) => {
+    if (e.target.tagName !== 'I' || e.target !== selectedTodo) {
+      taskMenu.classList.remove('show');
+    }
+  });
+};
