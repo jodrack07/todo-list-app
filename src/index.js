@@ -1,3 +1,4 @@
+import { deleteTask, updateStatus } from './modules/actions.js';
 import './style.css';
 
 const taskInput = document.querySelector('.add-input');
@@ -9,7 +10,7 @@ let isEditedTodo = false;
 // get data from the localstorage
 const todos = JSON.parse(localStorage.getItem('todo-list')) || [];
 
-function showTodos() {
+const showTodos = () => {
   taskBox.innerText = '';
   todos.forEach((todo, index) => {
     // apply the completed status iff the task/todo is completed
@@ -31,7 +32,14 @@ function showTodos() {
         </li>  
       `;
   });
-}
+};
+
+const editTask = (id, taskDescription) => {
+  editId = id;
+  isEditedTodo = true;
+  // put the todo description into the input field
+  taskInput.value = taskDescription;
+};
 
 taskInput.addEventListener('keyup', (e) => {
   const userTask = taskInput.value.trim();
@@ -55,7 +63,7 @@ taskInput.addEventListener('keyup', (e) => {
 
     // update the todo
     localStorage.setItem('todo-list', JSON.stringify(todos));
-    showTodos();
+    window.location.reload();
   }
 });
 
@@ -76,53 +84,31 @@ const showSubActions = (selectedTodo) => {
   });
 };
 
-const editTask = (id, taskDescription) => {
-  editId = id;
-  isEditedTodo = true;
-  // put the todo description into the input field
-  taskInput.value = taskDescription;
-};
+toggleButtons.forEach((toggleButton) =>
+  toggleButton.addEventListener('click', function () {
+    showSubActions(this);
+  })
+);
 
-function deleteTask(id) {
-  // remove one todo from the specified id
-  todos.splice(id, 1);
-  localStorage.setItem('todo-list', JSON.stringify(todos));
-  showTodos();
-}
+editButtons.forEach((editButton) =>
+  editButton.addEventListener('click', function () {
+    const [id, description] = this.getAttribute('data-info').split(',');
+    editTask(Number(id), String(description));
+  })
+);
 
-function updateStatus(selectedTodo) {
-  // get tje paragraph
-  const taskDescription = selectedTodo.parentElement.lastElementChild;
-  if (selectedTodo.checked) {
-    taskDescription.classList.add('completed');
-    // update the status of the checked todo
-    todos[selectedTodo.id].completed = true;
-  } else {
-    taskDescription.classList.remove('completed');
-    // update the status of the checked todo
-    todos[selectedTodo.id].completed = false;
-  }
-  // save changes into the local storage
-  localStorage.setItem('todo-list', JSON.stringify(todos));
-}
+deleteButtons.forEach((deleteButton) =>
+  deleteButton.addEventListener('click', function () {
+    const id = this.getAttribute('data-id');
+    deleteTask(Number(id));
+  })
+);
 
-toggleButtons.forEach((toggleButton) => toggleButton.addEventListener('click', function () {
-  showSubActions(this);
-}));
-
-editButtons.forEach((editButton) => editButton.addEventListener('click', function () {
-  const [id, description] = this.getAttribute('data-info').split(',');
-  editTask(Number(id), String(description));
-}));
-
-deleteButtons.forEach((deleteButton) => deleteButton.addEventListener('click', function () {
-  const id = this.getAttribute('data-id');
-  deleteTask(Number(id));
-}));
-
-statuses.forEach((input) => input.addEventListener('click', function () {
-  updateStatus(this);
-}));
+statuses.forEach((input) =>
+  input.addEventListener('click', function () {
+    updateStatus(this);
+  })
+);
 
 document.querySelector('#refresh').addEventListener('click', () => {
   window.location.reload();
