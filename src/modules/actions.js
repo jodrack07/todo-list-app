@@ -26,3 +26,9 @@ export const updateStatus = (selectedTodo) => {
   localStorage.setItem('todo-list', JSON.stringify(todos));
   window.location.reload();
 };
+
+export const ClearAllCompleted = () => {
+  const newTodo = todos.filter((todo) => todo.completed === false);
+  localStorage.setItem('todo-list', JSON.stringify(newTodo));
+  window.location.reload();
+};
