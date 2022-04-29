@@ -4,12 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -24,28 +18,16 @@
   </head>
   <body>
     <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="card card-white">
-            <div class="card-body">
-              <div
-                class="todo-intro mb-3 d-flex justify-content-between align-items-center"
-              >
-                <span class="fs-3">Today's To Do</span>
-                <i class="fa-solid fa-recycle fs-4"></i>
-              </div>
-              <input
-                type="text"
-                class="form-control add-task"
-                placeholder="Add to your list"
-              />
-              <ul class="todos"></ul>
-              <div class="text-center btn btn-light p-2 delete-all-btn">
-                <a href="#">Clear all completed</a>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="intro">
+        <span class="fs-3">Today's To Do</span>
+        <i class="fa-solid fa-arrows-rotate" id="refresh"></i>
+      </div>
+      <div class="task-input">
+        <input type="text" class="add-input" placeholder="Add a new todo" />
+      </div>
+      <ul class="task-box"></ul>
+      <div class="footer">
+        <a href="#">Clear all completed</a>
       </div>
     </div>
   </body>
