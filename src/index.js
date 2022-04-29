@@ -1,6 +1,10 @@
 /* eslint-disable func-names */
 
-import { deleteTask, updateStatus } from './modules/actions.js';
+import {
+  deleteTask,
+  updateStatus,
+  ClearAllCompleted,
+} from './modules/actions.js';
 import './style.css';
 
 const taskInput = document.querySelector('.add-input');
@@ -107,3 +111,7 @@ statuses.forEach((input) => input.addEventListener('click', function () {
 document.querySelector('#refresh').addEventListener('click', () => {
   window.location.reload();
 });
+
+const clearAllBtn = document.querySelector('.clearAll');
+
+clearAllBtn.addEventListener('click', ClearAllCompleted);
