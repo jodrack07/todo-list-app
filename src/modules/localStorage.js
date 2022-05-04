@@ -3,7 +3,5 @@ export default class LocalStorage {
     localStorage.setItem('TODO-LIST', JSON.stringify(data));
   };
 
-  static get = () => {
-    return JSON.parse(localStorage.getItem('TODO-LIST')) || [];
-  };
+  static get = () => JSON.parse(localStorage.getItem('TODO-LIST')) || [];
 }

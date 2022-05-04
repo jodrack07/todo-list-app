@@ -1,10 +1,12 @@
-import { todos, taskBox, userTask, clearAllCompletedBtn } from './variables.js';
+import {
+  todos, taskBox, userTask, clearAllCompletedBtn,
+} from './variables.js';
 import Task from './task.js';
 import LocalStorage from './localStorage.js';
 import Helpers from './helpers.js';
 
-export let update = false;
-export let tmp;
+let update = false;
+let tmp;
 
 export default class Actions {
   // display todos from the localstorage
