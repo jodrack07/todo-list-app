@@ -1,6 +1,1 @@
-import {
-  tasksArray,
-  taskSection,
-  userTask,
-  clearAllCompletedBtn,
-} from './variables.js';
+import { todos, taskBox, userTask, clearAllCompletedBtn } from './variables.js';
