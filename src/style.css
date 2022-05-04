@@ -7,7 +7,7 @@
 
 body {
   background-color: lightblue;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 li {
@@ -18,12 +18,16 @@ a {
   text-decoration: none;
 }
 
+h1 {
+  font-size: 18px;
+}
+
 .container {
   max-width: 400px;
   margin: 50px auto;
   background-color: #fff;
   border-radius: 3px;
-  padding: 20px 2px;
+  padding: 20px 0;
 }
 
 .intro {
@@ -35,7 +39,7 @@ a {
 }
 
 .intro i {
-  font-size: 25px;
+  font-size: 15px;
 }
 
 .task-input {
@@ -46,46 +50,48 @@ a {
   height: 90%;
   width: 100%;
   outline: none;
-  border: 1px solid #434343;
-  border-radius: 3px;
+  border: 1px solid #4343;
   padding: 0 10px;
   font-size: 15px;
   color: #4e4e4e;
+  margin-left: -0.99px;
 }
 
 .task-input input::placeholder {
   color: #bfbfbf;
 }
 
-.task-box {
+.tasks {
   margin: 9px 0;
-  padding: 0 5px;
+  font-size: 16px;
 }
 
-.task-box .task {
+.tasks .task {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  font-size: 17px;
-  margin-bottom: 18px;
-  border-bottom: 1px solid #f6f6f6;
+  font-size: 15px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #4343;
+
+  /* border-width: 100; */
+  padding: 0 5px;
 }
 
 .task-box .task:last-child {
   border: none;
 }
 
-.task label {
+.tasks .task .task-details {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 10px;
-  padding-bottom: 10px;
+  margin-bottom: 15px;
 }
 
-.task label input {
+.task input {
   width: 15px;
   height: 19px;
+  margin-right: 10px;
 }
 
 .task .actions {
@@ -95,6 +101,10 @@ a {
 
 .fa-solid {
   font-size: 15px;
+}
+
+.fa-trash-can {
+  color: red;
 }
 
 .sub-actions {

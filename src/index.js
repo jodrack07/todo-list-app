@@ -1,117 +1,21 @@
-/* eslint-disable func-names */
-
-import {
-  deleteTask,
-  updateStatus,
-  ClearAllCompleted,
-} from './modules/actions.js';
+//eslint-disable-line
+import { userTask, todos } from './modules/variables.js';
+import Actions from './modules/actions.js';
 import './style.css';
 
-const taskInput = document.querySelector('.add-input');
-const taskBox = document.querySelector('.task-box');
-
-let editId;
-let isEditedTodo = false;
-
-// get data from the localstorage
-const todos = JSON.parse(localStorage.getItem('todo-list')) || [];
-
-const showTodos = () => {
-  taskBox.innerText = '';
-  todos.forEach((todo, index) => {
-    // apply the completed status iff the task/todo is completed
-    const isCompleted = todo.completed ? 'completed' : '';
-    const checked = isCompleted === 'completed' ? 'checked' : '';
-    taskBox.innerHTML += `
-            <li class="task">
-          <label for="${index}">
-            <input type="checkbox" ${checked} id="${index}" class="input"/>
-            <p class="${isCompleted}">${todo.description}</p>
-          </label>
-          <div class="actions">
-            <i class="fa-solid fa-ellipsis"></i>
-            <ul class="sub-actions">
-              <li data-info="${index}, ${todo.description}" class="edit"><i class="fa-solid fa-pen-to-square" id="edit"></i>Edit</li>
-              <li data-id="${index}" class="delete"><i class="fa-solid fa-trash-can" id="delete"></i>Delete</li>
-            </ul>
-          </div>
-        </li>  
-      `;
-  });
-};
-
-const editTask = (id, taskDescription) => {
-  editId = id;
-  isEditedTodo = true;
-  // put the todo description into the input field
-  taskInput.value = taskDescription;
-};
-
-taskInput.addEventListener('keyup', (e) => {
-  const userTask = taskInput.value.trim();
-  if (e.key === 'Enter' && userTask) {
-    // fix the edit action
-    if (!isEditedTodo) {
-      const newTodo = {
-        description: userTask,
-        completed: false,
-        index: todos.length + 1,
-      };
-      // add the new todo to the todo list
-      todos.push(newTodo);
-    } else {
-      isEditedTodo = false;
-      todos[editId].description = taskInput.value;
-      window.location.reload();
-    }
-
-    taskInput.value = '';
-
-    // update the todo
-    localStorage.setItem('todo-list', JSON.stringify(todos));
-    window.location.reload();
+// populate the localStorage when the user press Enter
+userTask.addEventListener('keyup', (e) => {
+  if (e.keyCode === 13 && userTask.value) {
+    e.preventDefault();
+    Actions.addTask();
   }
 });
 
-showTodos();
-
-const editButtons = document.querySelectorAll('.edit');
-const deleteButtons = document.querySelectorAll('.delete');
-const toggleButtons = document.querySelectorAll('.fa-ellipsis');
-const statuses = document.querySelectorAll('.input');
-
-const showSubActions = (selectedTodo) => {
-  const taskMenu = selectedTodo.parentElement.lastElementChild;
-  taskMenu.classList.add('show');
-  document.addEventListener('click', (e) => {
-    if (e.target.tagName !== 'I' || e.target !== selectedTodo) {
-      taskMenu.classList.remove('show');
-    }
-  });
-};
-
-toggleButtons.forEach((toggleButton) => toggleButton.addEventListener('click', function () {
-  showSubActions(this);
-}));
-
-editButtons.forEach((editButton) => editButton.addEventListener('click', function () {
-  const [id, description] = this.getAttribute('data-info').split(',');
-  editTask(Number(id), String(description));
-}));
-
-deleteButtons.forEach((deleteButton) => deleteButton.addEventListener('click', function () {
-  const id = this.getAttribute('data-id');
-  deleteTask(Number(id));
-}));
-
-statuses.forEach((input) => input.addEventListener('click', function () {
-  updateStatus(this);
-}));
-
-document.querySelector('#refresh').addEventListener('click', () => {
-  window.location.reload();
-});
-
-const clearAllBtn = document.querySelector('.clearAll');
-
-clearAllBtn.addEventListener('click', ClearAllCompleted);
+// render all tasks/todos
+Actions.renderTask(todos);
+// remove a task/todo
+Actions.removeTask();
+// toggle the completed status of a task/todo
+Actions.toggleCompleted();
+// delete all completed task
+Actions.deleteAllCompleted();
