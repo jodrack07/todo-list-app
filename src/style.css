@@ -18,12 +18,16 @@ a {
   text-decoration: none;
 }
 
+h1 {
+  font-size: 18px;
+}
+
 .container {
   max-width: 400px;
   margin: 50px auto;
   background-color: #fff;
   border-radius: 3px;
-  padding: 20px 2px;
+  padding: 20px 0;
 }
 
 .intro {
@@ -35,7 +39,7 @@ a {
 }
 
 .intro i {
-  font-size: 25px;
+  font-size: 15px;
 }
 
 .task-input {
@@ -46,8 +50,7 @@ a {
   height: 90%;
   width: 100%;
   outline: none;
-  border: 1px solid #434343;
-  border-radius: 3px;
+  border: 1px solid #4343;
   padding: 0 10px;
   font-size: 15px;
   color: #4e4e4e;
@@ -59,7 +62,6 @@ a {
 
 .task-box {
   margin: 9px 0;
-  padding: 0 5px;
 }
 
 .task-box .task {
@@ -68,7 +70,9 @@ a {
   align-items: center;
   font-size: 17px;
   margin-bottom: 18px;
-  border-bottom: 1px solid #f6f6f6;
+  border-bottom: 1px solid #4343;
+  border-width: 100%;
+  padding: 0 5px;
 }
 
 .task-box .task:last-child {
