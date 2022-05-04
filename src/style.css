@@ -7,7 +7,7 @@
 
 body {
   background-color: lightblue;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 li {
@@ -54,22 +54,23 @@ h1 {
   padding: 0 10px;
   font-size: 15px;
   color: #4e4e4e;
+  margin-left: -0.99px;
 }
 
 .task-input input::placeholder {
   color: #bfbfbf;
 }
 
-.task-box {
+.tasks {
   margin: 9px 0;
+  font-size: 16px;
 }
 
-.task-box .task {
+.tasks .task {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  font-size: 17px;
-  margin-bottom: 18px;
+  font-size: 15px;
+  margin-bottom: 10px;
   border-bottom: 1px solid #4343;
   border-width: 100%;
   padding: 0 5px;
@@ -79,17 +80,20 @@ h1 {
   border: none;
 }
 
-.task label {
+.tasks .task .task-details {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 10px;
-  padding-bottom: 10px;
 }
 
-.task label input {
+.tasks .task .task-details {
+  margin-bottom: 15px;
+}
+
+.task input {
   width: 15px;
   height: 19px;
+  margin-right: 10px;
 }
 
 .task .actions {
@@ -99,6 +103,10 @@ h1 {
 
 .fa-solid {
   font-size: 15px;
+}
+
+.fa-trash-can {
+  color: red;
 }
 
 .sub-actions {
