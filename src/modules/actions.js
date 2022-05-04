@@ -2,6 +2,9 @@ import { todos, taskBox, userTask, clearAllCompletedBtn } from './variables.js';
 import Task from './task.js';
 import LocalStorage from './localStorage.js';
 
+export let update = false;
+export let tmp;
+
 export default class Actions {
   static renderTask = (todos) => {
     taskBox.innerHTML = '';
@@ -19,6 +22,22 @@ export default class Actions {
     <span class="span">&cross;</span>
   </div>
   `;
+    }
+  };
+
+  static addTask = () => {
+    if (!update) {
+      const task = new Task(userTask);
+      todos.push(task);
+      LocalStorage.save(todos);
+      Actions.renderTask(todos);
+      userTask.value = '';
+    } else {
+      todos[tmp].task = userTask.value;
+      LocalStorage.save(todos);
+      Actions.renderTask(todos);
+      userTask.value = '';
+      update = false;
     }
   };
 }
