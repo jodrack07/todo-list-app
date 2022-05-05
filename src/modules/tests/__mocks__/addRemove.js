@@ -1,17 +1,16 @@
-import LocalStorage from '../../localStorage';
+import LocalStorage from '../../localStorage.js';
 
-const update = false;
+let update = false;
 const todos = LocalStorage.get();
 
 export const addTask = (task) => {
   if (!task) return null;
   if (!update) {
     todos.push(task);
-    LocalStorage.save(todos);
   } else {
-    LocalStorage.save(todos);
     update = false;
   }
+  return LocalStorage.save(todos);
 };
 
 // remove a task into the localstorage

@@ -1,4 +1,6 @@
-import { todos, taskBox, userTask, clearAllCompletedBtn } from './variables.js';
+import {
+  todos, taskBox, userTask, clearAllCompletedBtn,
+} from './variables.js';
 import Task from './task.js';
 import LocalStorage from './localStorage.js';
 import Helpers from './helpers.js';
@@ -32,11 +34,10 @@ export default class Actions {
     if (!task) return null;
     if (!update) {
       todos.push(task);
-      LocalStorage.save(todos);
     } else {
-      LocalStorage.save(todos);
       update = false;
     }
+    return LocalStorage.save(todos);
   };
 
   // remove a task into the localstorage

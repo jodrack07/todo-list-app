@@ -1,8 +1,8 @@
 /**
  * @jest-environment jsdom
  */
-import LocalStorage from '../localStorage';
-import { addTask, removeTask } from './__mocks__/addRemove';
+import LocalStorage from '../localStorage.js';
+import { addTask, removeTask } from './__mocks__/addRemove.js';
 
 describe('Add and Remove element into the localstorage', () => {
   it('should return null is no task specified', () => {
