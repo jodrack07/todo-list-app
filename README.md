@@ -45,6 +45,15 @@ To get a local copy up and running follow these simple example steps.
 - GitHub: [@joseph07-drack](https://github.com/joseph07-drack)
 - LinkedIn: [jodrack](https://www.linkedin.com/in/joseph-buingo-ab2682225/)
 
+
+👩 **Taheny Belguith**
+
+- GitHub: [@TahenyBELGUITH](https://github.com/TahenyBELGUITH)
+- Twitter: [@BelguithTaheny](https://twitter.com/BelguithTaheny)
+- LinkedIn: [belguith taheny](https://www.linkedin.com/in/belguith-taheny-47b93a162/)
+
+
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!

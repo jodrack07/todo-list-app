@@ -30,40 +30,20 @@ export default class Actions {
   };
 
   // add a task into the localstorage
-  static addTask = () => {
+  static addTask = (task) => {
+    if (!task) return null;
     if (!update) {
-      const task = new Task(userTask);
       todos.push(task);
-      LocalStorage.save(todos);
-      Actions.renderTask(todos);
-      userTask.value = '';
     } else {
-      todos[tmp].task = userTask.value;
-      LocalStorage.save(todos);
-      Actions.renderTask(todos);
-      userTask.value = '';
       update = false;
     }
+    return LocalStorage.save(todos);
   };
 
   // remove a task into the localstorage
-  static removeTask = () => {
-    taskBox.addEventListener('click', (e) => {
-      if (e.target.classList.contains('fa-trash-can')) {
-        todos.splice(e.target.parentElement.id, 1);
-        userTask.value = '';
-        Actions.renderTask(todos);
-        Helpers.updateIndex();
-        LocalStorage.save(todos);
-      }
-
-      if (e.target.classList.contains('description')) {
-        userTask.focus();
-        userTask.value = e.target.innerHTML;
-        update = true;
-        tmp = e.target.id;
-      }
-    });
+  static removeTask = (taskId) => {
+    todos.splice(taskId, 1);
+    LocalStorage.save(todos);
   };
 
   // toggle the completed status
