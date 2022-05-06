@@ -3,7 +3,11 @@
  */
 import LocalStorage from '../localStorage.js';
 import { addTask } from './__mocks__/addRemove.js';
-import { toggleStatus, deleteAllCompleted } from './__mocks__/editRemoveAll.js';
+import {
+  toggleStatus,
+  deleteAllCompleted,
+  editTaskDescription,
+} from './__mocks__/editRemoveAll.js';
 
 describe('Add element(s) into the localstorage', () => {
   it('should return the exact number of elements inside the localstorage', () => {
@@ -27,5 +31,10 @@ describe('Edit and Remove All', () => {
     const todos = LocalStorage.get();
     const newTodos = deleteAllCompleted(todos);
     expect(newTodos.length).toBe(2);
+  });
+
+  it('should update the todo description', () => {
+    const todos = editTaskDescription(0, 'Testing');
+    expect(todos[0].description).toBe('Testing');
   });
 });
