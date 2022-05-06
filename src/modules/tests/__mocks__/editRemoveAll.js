@@ -10,3 +10,4 @@ export const toggleStatus = (id) => {
 export const deleteAllCompleted = (oldTodos) => {
   return oldTodos.filter((todo) => todo.completed === false);
 };
+
