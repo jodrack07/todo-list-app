@@ -6,3 +6,7 @@ export const toggleStatus = (id) => {
   LocalStorage.save(todos);
   return todos;
 };
+
+export const deleteAllCompleted = (oldTodos) => {
+  return oldTodos.filter((todo) => todo.completed === false);
+};
