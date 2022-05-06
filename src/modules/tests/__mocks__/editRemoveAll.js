@@ -1,4 +1,4 @@
-import LocalStorage from '../../localStorage';
+import LocalStorage from '../../localStorage.js';
 
 export const toggleStatus = (id) => {
   const todos = LocalStorage.get();
@@ -7,7 +7,4 @@ export const toggleStatus = (id) => {
   return todos;
 };
 
-export const deleteAllCompleted = (oldTodos) => {
-  return oldTodos.filter((todo) => todo.completed === false);
-};
-
+export const deleteAllCompleted = (oldTodos) => oldTodos.filter((todo) => todo.completed === false);
