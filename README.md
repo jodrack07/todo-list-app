@@ -19,7 +19,7 @@
 
 ## Live Demo
 
-[Live Demo Link here](https://joseph07-drack.github.io/todo-app/dist/)
+[Live Demo Link here](https://joseph07-drack.github.io/todo-list-app/dist/)
 
 ## Getting Started
 
